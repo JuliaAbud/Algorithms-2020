@@ -26,7 +26,7 @@ def rbtOperations():
     i = []
     s = []
     l = []
-    for x in range(5000):
+    for x in range(1000):#5000
         r = randint(0, 10000)
         t1 = timeit(stmt='rbtInsert('+str(r)+')', setup='from __main__ import rbtInsert', number=1) 
         t2 = timeit(stmt='rbtSearch('+str(r)+')', setup='from __main__ import rbtSearch', number=1)
@@ -40,15 +40,24 @@ def rbtOperations():
 
 def showGraph(results1, results2, results3, thispath):
     fig, ax = plt.subplots()
-    ax.plot(results3,'gray',label='log(n)')
+    ax.plot(results3,'black',label='log n')
+    ax.plot(results2,'red',label='search')
     ax.plot(results1,'blue',label='insert')
-    ax.plot(results2,'orange',label='search')
 
-    ax.set(xlabel='input (n)', ylabel='time(s)', title='Red black tree')
-    ax.grid()
+    ax.set(xlabel='input (n)', ylabel='time(s)', title='RBT')
     ax.legend(loc='best', fancybox=True, shadow=True, ncol=1)
 
-    fig.savefig(os.path.join(thispath, "rbt.png"))
+    fig.savefig(os.path.join(thispath, "rbt_1.png"))
+
+    #ax.plot(results3,'gray',label='log(n)')
+    #ax.plot(results1,'blue',label='insert')
+    #ax.plot(results2,'orange',label='search')
+
+    #ax.set(xlabel='input (n)', ylabel='time(s)', title='Red black tree')
+    #ax.grid()
+    #ax.legend(loc='best', fancybox=True, shadow=True, ncol=1)
+
+    #fig.savefig(os.path.join(thispath, "rbt.png"))
     plt.show()
 
 
